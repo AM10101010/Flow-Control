@@ -3,35 +3,40 @@ Console.WriteLine("Skriv in siffror för att välja ett alternativ:");
 
 while (true)
 {
-    Console.WriteLine("1. Ungdom eller pensionär");
+    Console.WriteLine("1. Antalet personer och deras ålder");
     Console.WriteLine("2. Alternativ 2");
     Console.WriteLine("3. Avsluta");
 
     string? input = Console.ReadLine();
-
+    double price = 0;
     if (input == "1")
     {
-        Console.WriteLine("Ange din ålder:");
-
-        // Allow null
-        string? ageInput = Console.ReadLine();
-
-        if (!string.IsNullOrEmpty(ageInput) && int.TryParse(ageInput, out int age))
+        Console.WriteLine("Hur många personer?");
+        string? personerInput = Console.ReadLine();
+        
+        for (int i = 0; i < int.Parse(personerInput); i++)
         {
+            Console.WriteLine($"Person {i + 1}: Hur gammal är du?");
+            string? ageInput = Console.ReadLine();
+            int age = int.Parse(ageInput);
+         
             if (age < 20)
             {
                 Console.WriteLine("Ungdomspris: 80 kr");
+                price  += 80;
             }
             else if (age >= 64)
             {
                 Console.WriteLine("Pensionärspris: 90 kr");
+                price += 90;
             }
             else
             {
                 Console.WriteLine("Standardpris: 120 kr");
+                price += 120;
             }
-        }
-            
+         }
+            Console.WriteLine("Totalt pris: " + price + " kr");
     }
     else if (input == "2")
     {
