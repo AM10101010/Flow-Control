@@ -14,11 +14,11 @@ while (true)
         Console.WriteLine("Hur många personer?");
         string? personerInput = Console.ReadLine();
         
-        for (int i = 0; i < int.Parse(personerInput); i++)
+        for (int i = 0; i < int.Parse(personerInput ?? "0"); i++)
         {
             Console.WriteLine($"Person {i + 1}: Hur gammal är du?");
             string? ageInput = Console.ReadLine();
-            int age = int.Parse(ageInput);
+            int age = int.Parse(ageInput ?? "0");
          
             if (age < 20)
             {
