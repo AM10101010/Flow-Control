@@ -35,7 +35,7 @@ while (true)
         }
 
         // Loopa igenom varje person och fråga efter ålder
-        for (int i = 0; i < int.Parse(personerInput ?? "0"); i++)
+        for (int i = 0; i < antalPersoner; i++)
         {
             Console.WriteLine($"Person {i + 1}: Hur gammal är du?");
             string? ageInput = Console.ReadLine();
