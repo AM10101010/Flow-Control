@@ -1,4 +1,10 @@
-﻿
+﻿// Definiera pris och åldersgränser som konstanter
+const int UngdomsPris = 80;
+const int PensionärsPris = 90;
+const int StandardPris = 120;
+const int UngdomsGräns = 20;
+const int PensionärsGräns = 64;
+
 // Visa huvudmenyn
 
 Console.WriteLine("Huvudmeny");
@@ -40,48 +46,24 @@ while (true)
             Console.WriteLine($"Person {i + 1}: Hur gammal är du?");
             string? ageInput = Console.ReadLine();
 
-            if (!int.TryParse(ageInput, out int age) || age < 0)
-            {
-                Console.WriteLine("Ogiltig ålder, hoppar över denna person.");
-                continue;
-            }
-            // Bestäm pris baserat på ålderskategori
-            if (age > 100 || age < 5) 
-            {
-                Console.WriteLine("Barn under fem och pensionärer över 100 går gratis");
-                price += 0;
-                continue;
-            }
-            else if (age < 20)
-            {
-                Console.WriteLine("Ungdomspris: 80 kr");
-                price  += 80;
-            }
-          
-            else if (age > 64)
-            {
-                Console.WriteLine("Pensionärspris: 90 kr");
-                price += 90;
-            }
-            else
-            {
-                Console.WriteLine("Standardpris: 120 kr");
-                price += 120;
-            }
+             if (int.TryParse(ageInput, out int age))
+             {
+                 price += GetPriceForAge(age);
+             }
         }
-            // Skriv ut totalsumman för alla personer
-            Console.WriteLine();
-            Console.WriteLine("----------------------------------------");
-            Console.WriteLine("Totalt pris: " + price + " kr");
-            Console.WriteLine("----------------------------------------");
-            Console.WriteLine();
+                // Skriv ut totalsumman för alla personer
+                Console.WriteLine();
+                Console.WriteLine("----------------------------------------");
+                Console.WriteLine("Totalt pris: " + price + " kr");
+                Console.WriteLine("----------------------------------------");
+                Console.WriteLine();
     }
-
+    
     // Alternativ 2: Skriv ut en användarangiven text tio gånger
     else if (input == "2")
     {
         Console.WriteLine("Anger en godtycklig text:");
-        string ? text = Console.ReadLine();
+        string? text = Console.ReadLine();
         // Upprepa texten tio gånger
         for (int i = 0; i < 10; i++)
         {
@@ -120,5 +102,13 @@ while (true)
     else
     {
         Console.WriteLine("Ogiltigt val, försök igen.");
+    }
+    
+    static int GetPriceForAge(int age)
+    {
+        if (age < 5 || age > 100) return 0;
+        if (age < UngdomsGräns) return UngdomsPris;
+        if (age > PensionärsGräns) return PensionärsPris;
+        return StandardPris;
     }
 }
