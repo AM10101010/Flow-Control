@@ -6,7 +6,7 @@ while (true)
 {
     Console.WriteLine();
     Console.WriteLine("1. Antalet personer och deras ålder");
-    Console.WriteLine("2. Alternativ 2");
+    Console.WriteLine("2. Upprepa tio gånger");
     Console.WriteLine("3. Avsluta");
 
     string? input = Console.ReadLine();
@@ -52,7 +52,12 @@ while (true)
     }
     else if (input == "2")
     {
-        Console.WriteLine("Du valde alternativ 2");
+        Console.WriteLine("Anger en godtycklig text:");
+        string ? text = Console.ReadLine();
+        for (int i = 0; i < 10; i++)
+        {
+            Console.WriteLine(text + " " + (i + 1));
+        }
     }
     else if (input == "3")
     {
