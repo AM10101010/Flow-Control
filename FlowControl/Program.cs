@@ -33,7 +33,7 @@ while (true)
                 Console.WriteLine("Ungdomspris: 80 kr");
                 price  += 80;
             }
-            else if (age >= 64)
+            else if (age > 64)
             {
                 Console.WriteLine("Pensionärspris: 90 kr");
                 price += 90;
