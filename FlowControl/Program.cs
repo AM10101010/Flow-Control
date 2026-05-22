@@ -54,9 +54,10 @@ while (true)
     {
         Console.WriteLine("Anger en godtycklig text:");
         string ? text = Console.ReadLine();
+
         for (int i = 0; i < 10; i++)
         {
-            Console.WriteLine(text + " " + (i + 1));
+            Console.Write(text + " " + (i + 1));
         }
     }
     else if (input == "3")
