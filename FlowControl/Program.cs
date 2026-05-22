@@ -1,9 +1,18 @@
-﻿Console.WriteLine("Huvudmeny");
+﻿
+// Visa huvudmenyn
+
+Console.WriteLine("Huvudmeny");
 Console.WriteLine("Skriv in siffror för att välja ett alternativ:");
 Console.WriteLine();
 
 while (true)
 {
+    // Visa huvudmenyn med fyra alternativ:
+    // 1. Räkna ut totalpris baserat på antal personer och deras åldrar
+    // 2. Skriv ut en text tio gånger
+    // 3. Hämta och visa det tredje ordet från en mening
+    // 4. Avsluta programmet
+
     Console.WriteLine();
     Console.WriteLine("1. Antalet personer och deras ålder");
     Console.WriteLine("2. Upprepa tio gånger");
@@ -14,21 +23,25 @@ while (true)
     double price = 0;
     if (input == "1")
     {
+        // Fråga hur många personer det gäller
         Console.WriteLine("Hur många personer?");
         string? personerInput = Console.ReadLine();
 
+        // Validera input — måste vara ett heltal större än 0
         if (!int.TryParse(personerInput, out int antalPersoner) || antalPersoner < 1)
         {
           Console.WriteLine("Ogiltigt antal, försök igen.");
           continue;
         }
-        
+
+        // Loopa igenom varje person och fråga efter ålder
         for (int i = 0; i < int.Parse(personerInput ?? "0"); i++)
         {
             Console.WriteLine($"Person {i + 1}: Hur gammal är du?");
             string? ageInput = Console.ReadLine();
             int age = int.Parse(ageInput ?? "0");
-         
+
+            // Bestäm pris baserat på ålderskategori
             if (age < 20)
             {
                 Console.WriteLine("Ungdomspris: 80 kr");
@@ -45,6 +58,7 @@ while (true)
                 price += 120;
             }
          }
+            // Skriv ut totalsumman för alla personer
             Console.WriteLine();
             Console.WriteLine("----------------------------------------");
             Console.WriteLine("Totalt pris: " + price + " kr");
