@@ -7,7 +7,8 @@ while (true)
     Console.WriteLine();
     Console.WriteLine("1. Antalet personer och deras ålder");
     Console.WriteLine("2. Upprepa tio gånger");
-    Console.WriteLine("3. Avsluta");
+    Console.WriteLine("3. Det tredje ordet");
+    Console.WriteLine("4. Avsluta");
 
     string? input = Console.ReadLine();
     double price = 0;
@@ -61,6 +62,26 @@ while (true)
         }
     }
     else if (input == "3")
+    {
+       Console.WriteLine("Skriv in en mening:");
+       string? line = Console.ReadLine();
+       
+       if (line != null)
+       {
+         string[] split = line.Split(' ');
+         if (split.Length >= 3)
+         {
+              Console.WriteLine();
+              Console.WriteLine("Det tredje ordet är: " + split[2]);
+              Console.WriteLine();
+         }
+         else
+         {
+              Console.WriteLine("Mening måste innehålla minst tre ord.");
+         }
+       }
+    }
+    else if (input == "4")
     {
         Console.WriteLine("Avslutar programmet...");
         break;
