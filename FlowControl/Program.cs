@@ -1,8 +1,10 @@
 ﻿Console.WriteLine("Huvudmeny");
 Console.WriteLine("Skriv in siffror för att välja ett alternativ:");
+Console.WriteLine();
 
 while (true)
 {
+    Console.WriteLine();
     Console.WriteLine("1. Antalet personer och deras ålder");
     Console.WriteLine("2. Alternativ 2");
     Console.WriteLine("3. Avsluta");
@@ -13,6 +15,12 @@ while (true)
     {
         Console.WriteLine("Hur många personer?");
         string? personerInput = Console.ReadLine();
+
+        if (!int.TryParse(personerInput, out int antalPersoner) || antalPersoner < 1)
+        {
+          Console.WriteLine("Ogiltigt antal, försök igen.");
+          continue;
+        }
         
         for (int i = 0; i < int.Parse(personerInput ?? "0"); i++)
         {
@@ -36,7 +44,11 @@ while (true)
                 price += 120;
             }
          }
+            Console.WriteLine();
+            Console.WriteLine("----------------------------------------");
             Console.WriteLine("Totalt pris: " + price + " kr");
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine();
     }
     else if (input == "2")
     {
