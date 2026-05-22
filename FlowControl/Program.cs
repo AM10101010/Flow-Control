@@ -42,11 +42,18 @@ while (true)
             int age = int.Parse(ageInput ?? "0");
 
             // Bestäm pris baserat på ålderskategori
-            if (age < 20)
+            if (age > 100 || age < 5) 
+            {
+                Console.WriteLine("Barn under fem och pensionärer över 100 går gratis");
+                price += 0;
+                continue;
+            }
+            else if (age < 20)
             {
                 Console.WriteLine("Ungdomspris: 80 kr");
                 price  += 80;
             }
+          
             else if (age > 64)
             {
                 Console.WriteLine("Pensionärspris: 90 kr");
@@ -57,7 +64,7 @@ while (true)
                 Console.WriteLine("Standardpris: 120 kr");
                 price += 120;
             }
-         }
+        }
             // Skriv ut totalsumman för alla personer
             Console.WriteLine();
             Console.WriteLine("----------------------------------------");
