@@ -65,26 +65,31 @@ while (true)
             Console.WriteLine("----------------------------------------");
             Console.WriteLine();
     }
+
+    // Alternativ 2: Skriv ut en användarangiven text tio gånger
     else if (input == "2")
     {
         Console.WriteLine("Anger en godtycklig text:");
         string ? text = Console.ReadLine();
-
+        // Upprepa texten tio gånger
         for (int i = 0; i < 10; i++)
         {
             Console.Write(text + " " + (i + 1));
         }
     }
+    // Alternativ 3: Hämta och visa det tredje ordet från en mening
     else if (input == "3")
     {
        Console.WriteLine("Skriv in en mening:");
        string? line = Console.ReadLine();
        
+       // Kontrollera om input är null
        if (line != null)
        {
          string[] split = line.Split(' ');
          if (split.Length >= 3)
          {
+              // Skriv ut det tredje ordet (index 2 eftersom arrayer börjar på 0)
               Console.WriteLine();
               Console.WriteLine("Det tredje ordet är: " + split[2]);
               Console.WriteLine();
