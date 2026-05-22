@@ -20,9 +20,9 @@ while (true)
     Console.WriteLine("4. Avsluta");
 
     string? input = Console.ReadLine();
-    double price = 0;
     if (input == "1")
     {
+        int price = 0;
         // Fråga hur många personer det gäller
         Console.WriteLine("Hur många personer?");
         string? personerInput = Console.ReadLine();
