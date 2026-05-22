@@ -39,8 +39,12 @@ while (true)
         {
             Console.WriteLine($"Person {i + 1}: Hur gammal är du?");
             string? ageInput = Console.ReadLine();
-            int age = int.Parse(ageInput ?? "0");
 
+            if (!int.TryParse(ageInput, out int age) || age < 0)
+            {
+                Console.WriteLine("Ogiltig ålder, hoppar över denna person.");
+                continue;
+            }
             // Bestäm pris baserat på ålderskategori
             if (age > 100 || age < 5) 
             {
