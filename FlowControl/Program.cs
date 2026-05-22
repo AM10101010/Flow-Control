@@ -94,7 +94,8 @@ while (true)
        if (line != null)
        {
          string[] split = line.Split(' ');
-         if (split.Length >= 3)
+         int wordCount = split.Length;
+         if (wordCount >= 3)
          {
               // Skriv ut det tredje ordet (index 2 eftersom arrayer börjar på 0)
               Console.WriteLine();
