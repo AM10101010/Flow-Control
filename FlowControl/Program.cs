@@ -36,8 +36,8 @@ while (true)
         // Validera input — måste vara ett heltal större än 0
         if (!int.TryParse(personerInput, out int antalPersoner) || antalPersoner < 1)
         {
-          Console.WriteLine("Ogiltigt antal, försök igen.");
-          continue;
+            Console.WriteLine("Ogiltigt antal, försök igen.");
+            continue;
         }
 
         // Loopa igenom varje person och fråga efter ålder
@@ -46,19 +46,19 @@ while (true)
             Console.WriteLine($"Person {i + 1}: Hur gammal är du?");
             string? ageInput = Console.ReadLine();
 
-             if (int.TryParse(ageInput, out int age))
-             {
-                 price += GetPriceForAge(age);
-             }
+            if (int.TryParse(ageInput, out int age))
+            {
+                price += GetPriceForAge(age);
+            }
         }
-                // Skriv ut totalsumman för alla personer
-                Console.WriteLine();
-                Console.WriteLine("----------------------------------------");
-                Console.WriteLine("Totalt pris: " + price + " kr");
-                Console.WriteLine("----------------------------------------");
-                Console.WriteLine();
+        // Skriv ut totalsumman för alla personer
+        Console.WriteLine();
+        Console.WriteLine("----------------------------------------");
+        Console.WriteLine("Totalt pris: " + price + " kr");
+        Console.WriteLine("----------------------------------------");
+        Console.WriteLine();
     }
-    
+
     // Alternativ 2: Skriv ut en användarangiven text tio gånger
     else if (input == "2")
     {
@@ -73,26 +73,26 @@ while (true)
     // Alternativ 3: Hämta och visa det tredje ordet från en mening
     else if (input == "3")
     {
-       Console.WriteLine("Skriv in en mening:");
-       string? line = Console.ReadLine();
-       
-       // Kontrollera om input är null
-       if (line != null)
-       {
-         string[] split = line.Split(' ');
-         int wordCount = split.Length;
-         if (wordCount >= 3)
-         {
-              // Skriv ut det tredje ordet (index 2 eftersom arrayer börjar på 0)
-              Console.WriteLine();
-              Console.WriteLine("Det tredje ordet är: " + split[2]);
-              Console.WriteLine();
-         }
-         else
-         {
-              Console.WriteLine("Mening måste innehålla minst tre ord.");
-         }
-       }
+        Console.WriteLine("Skriv in en mening:");
+        string? line = Console.ReadLine();
+
+        // Kontrollera om input är null
+        if (line != null)
+        {
+            string[] split = line.Split(' ');
+            int wordCount = split.Length;
+            if (wordCount >= 3)
+            {
+                // Skriv ut det tredje ordet (index 2 eftersom arrayer börjar på 0)
+                Console.WriteLine();
+                Console.WriteLine("Det tredje ordet är: " + split[2]);
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("Mening måste innehålla minst tre ord.");
+            }
+        }
     }
     else if (input == "4")
     {
@@ -103,7 +103,7 @@ while (true)
     {
         Console.WriteLine("Ogiltigt val, försök igen.");
     }
-    
+
     static int GetPriceForAge(int age)
     {
         if (age < 5 || age > 100) return 0;
