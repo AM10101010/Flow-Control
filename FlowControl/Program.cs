@@ -5,10 +5,10 @@ const int StandardPris = 120;
 const int UngdomsGräns = 20;
 const int PensionärsGräns = 64;
 
-bool fortsätt = true;
+bool running = true;
 
 // Huvudloop som körs tills användaren väljer att avsluta
-while (fortsätt)
+while (running)
 {
     // Visa huvudmenyn
     Console.WriteLine("Huvudmeny");
@@ -31,6 +31,7 @@ while (fortsätt)
         case "4": HandleExit(); break;
         default: Console.WriteLine("Ogiltigt val, försök igen."); break;
     }
+
 }
 
 // Metod för att hantera inmatning av text och upprepa den tio gånger1
@@ -49,7 +50,7 @@ void HandleRepeatText()
 void HandleExit()
 {
     Console.WriteLine("Avslutar programmet...");
-    fortsätt = false;
+    running = false;
 }
 
 // Beräkna pris baserat på antal personer och deras ålder
@@ -70,21 +71,21 @@ void HandlePriceCalculation()
     int i = 0;
     while (i < antalPersoner)
     {
-        Console.Write($"Ange ålder för person {i + 1}: ");
+       Console.Write($"Ange ålder för person {i + 1}: ");
         string? ageInput = Console.ReadLine();
 
-        if (int.TryParse(ageInput, out int age))
-        {
-            int personPris = GetPriceForAge(age);
-            string kategori = GetCategoryForAge(age);
-            Console.WriteLine($"Person {i + 1} är {kategori}. Pris: {personPris} kr");
-            price += personPris;
-            i++;
-        }
-        else
-        {
-            Console.WriteLine("Ogiltig ålder, försök igen.");
-        }
+     if (int.TryParse(ageInput, out int age))
+     {
+        int personPris = GetPriceForAge(age);
+        string kategori = GetCategoryForAge(age);
+        Console.WriteLine($"Person {i + 1} är {kategori}. Pris: {personPris} kr");
+        price += personPris;
+        i++;
+     }
+     else
+     {
+        Console.WriteLine("Ogiltig ålder, försök igen.");
+     }
     }
     // Skriv ut totalsumman för alla personer
     Console.WriteLine();
