@@ -113,7 +113,6 @@ while (fortsätt)
         }
     }
     // Metod för att hantera inmatning av text och upprepa den tio gånger1
-
     void HandleRepeatText()
     {
         Console.WriteLine("Anger en godtycklig text:");
@@ -132,7 +131,8 @@ while (fortsätt)
         fortsätt = false;
     }
 }
-    // Metod för att beräkna pris baserat på ålder
+
+// Metod för att beräkna pris baserat på ålder
 static int GetPriceForAge(int age)
 {
         if (age < 5 || age > 100) return 0;
@@ -140,6 +140,7 @@ static int GetPriceForAge(int age)
         if (age > PensionärsGräns) return PensionärsPris;
         return StandardPris;
 }
+
 static string GetCategoryForAge(int age)
 {
     if (age < 5 || age > 100) return "";
