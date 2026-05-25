@@ -26,6 +26,7 @@ while (true)
     Console.WriteLine("4. Avsluta");
 
     string? input = Console.ReadLine();
+    
     if (input == "1")
     {
         int price = 0;
@@ -44,13 +45,28 @@ while (true)
         for (int i = 0; i < antalPersoner; i++)
         {
             Console.WriteLine($"Person {i + 1}: Hur gammal är du?");
+
             string? ageInput = Console.ReadLine();
 
             if (int.TryParse(ageInput, out int age))
             {
                 price += GetPriceForAge(age);
             }
+            else
+            {
+                Console.WriteLine("Ogiltig ålder, försök igen.");
+                
+                try
+                {
+                    i--; // Minska i för att fråga om samma person igen
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ett fel inträffade: " + ex.Message);
+                }
+            }
         }
+
         // Skriv ut totalsumman för alla personer
         Console.WriteLine();
         Console.WriteLine("----------------------------------------");
@@ -103,12 +119,12 @@ while (true)
     {
         Console.WriteLine("Ogiltigt val, försök igen.");
     }
+}
 
-    static int GetPriceForAge(int age)
-    {
+static int GetPriceForAge(int age)
+{
         if (age < 5 || age > 100) return 0;
         if (age < UngdomsGräns) return UngdomsPris;
         if (age > PensionärsGräns) return PensionärsPris;
         return StandardPris;
-    }
 }
