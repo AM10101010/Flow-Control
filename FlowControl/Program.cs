@@ -58,19 +58,11 @@ while (fortsätt)
                 string kategori = GetCategoryForAge(age);
                 Console.WriteLine($"Person {i + 1} är {kategori}. Pris: {personPris} kr");
                 price += personPris;
+                i++;
             }
             else
             {
                 Console.WriteLine("Ogiltig ålder, försök igen.");
-
-                try
-                {
-                    i--; // Minska i för att fråga om samma person igen
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Ett fel inträffade: " + ex.Message);
-                }
             }
         }
         // Skriv ut totalsumman för alla personer
