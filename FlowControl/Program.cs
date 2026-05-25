@@ -31,7 +31,6 @@ while (fortsätt)
         case "4": HandleExit(); break;
         default: Console.WriteLine("Ogiltigt val, försök igen."); break;
     }
-
 }
 
 // Metod för att hantera inmatning av text och upprepa den tio gånger1
