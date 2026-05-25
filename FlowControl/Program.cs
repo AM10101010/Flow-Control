@@ -140,7 +140,7 @@ static int GetPriceForAge(int age)
         if (age > PensionärsGräns) return PensionärsPris;
         return StandardPris;
 }
-string GetCategoryForAge(int age)
+static string GetCategoryForAge(int age)
 {
     if (age < 5 || age > 100) return "";
     if (age < UngdomsGräns) return "ungdom";
