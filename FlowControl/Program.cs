@@ -31,109 +31,113 @@ while (fortsätt)
         case "4": HandleExit(); break;
         default: Console.WriteLine("Ogiltigt val, försök igen."); break;
     }
-    // Beräkna pris baserat på antal personer och deras ålder
-    void HandlePriceCalculation()
+
+}
+
+// Metod för att hantera inmatning av text och upprepa den tio gånger1
+void HandleRepeatText()
+{
+    Console.WriteLine("Anger en godtycklig text:");
+    string? text = Console.ReadLine();
+    // Upprepa texten tio gånger
+    for (int i = 0; i < 10; i++)
     {
-        int price = 0;
-        // Fråga hur många personer det gäller
-        Console.WriteLine("Hur många personer?");
-        string? personerInput = Console.ReadLine();
-
-        // Validera input — måste vara ett heltal större än 0
-        if (!int.TryParse(personerInput, out int antalPersoner) || antalPersoner < 1)
-        {
-            Console.WriteLine("Ogiltigt antal, försök igen.");
-            return;
-        }
-        // Loopa igenom varje person och fråga efter ålder
-        for (int i = 0; i < antalPersoner; i++)
-        {
-            Console.WriteLine($" Ange ålder för person {i + 1}:");
-
-            string? ageInput = Console.ReadLine();
-
-            if (int.TryParse(ageInput, out int age))
-            {
-                int personPris = GetPriceForAge(age);
-                string kategori = GetCategoryForAge(age);
-                Console.WriteLine($"Person {i + 1} är {kategori}. Pris: {personPris} kr");
-                price += personPris;
-                i++;
-            }
-            else
-            {
-                Console.WriteLine("Ogiltig ålder, försök igen.");
-            }
-        }
-        // Skriv ut totalsumman för alla personer
-        Console.WriteLine();
-        Console.WriteLine("******************************************");
-        Console.WriteLine();
-        Console.WriteLine();
-        Console.WriteLine("             Totalt pris: " + price + " kr");
-        Console.WriteLine();
-        Console.WriteLine();
-        Console.WriteLine("******************************************");
-        Console.WriteLine();
+        Console.Write(text + (i + 1) + ", ");
     }
-    // Metod för att hantera inmatning av en mening och visa det tredje ordet
-    void HandleThirdWord()
-    {
-        Console.WriteLine("Skriv in en mening:");
-        string? line = Console.ReadLine();
+    Console.WriteLine();
+}
+// Hantera avslutning av programmet
+void HandleExit()
+{
+    Console.WriteLine("Avslutar programmet...");
+    fortsätt = false;
+}
 
-        // Kontrollera om input är null
-        if (line != null)
+// Beräkna pris baserat på antal personer och deras ålder
+void HandlePriceCalculation()
+{
+    int price = 0;
+    // Fråga hur många personer det gäller
+    Console.WriteLine("Hur många personer?");
+    string? personerInput = Console.ReadLine();
+
+    // Validera input — måste vara ett heltal större än 0
+    if (!int.TryParse(personerInput, out int antalPersoner) || antalPersoner < 1)
+    {
+        Console.WriteLine("Ogiltigt antal, försök igen.");
+        return;
+    }
+    // Loopa igenom varje person och fråga efter ålder
+    int i = 0;
+    while (i < antalPersoner)
+    {
+        Console.Write($"Ange ålder för person {i + 1}: ");
+        string? ageInput = Console.ReadLine();
+
+        if (int.TryParse(ageInput, out int age))
         {
-            var split = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            int wordCount = split.Length;
-            if (wordCount >= 3)
-            {
-                // Skriv ut det tredje ordet (index 2 eftersom arrayer börjar på 0)
-                Console.WriteLine();
-                Console.WriteLine("Det tredje ordet är: " + split[2]);
-                Console.WriteLine();
-            }
-            else
-            {
-                Console.WriteLine("Mening måste innehålla minst tre ord.");
-            }
+            int personPris = GetPriceForAge(age);
+            string kategori = GetCategoryForAge(age);
+            Console.WriteLine($"Person {i + 1} är {kategori}. Pris: {personPris} kr");
+            price += personPris;
+            i++;
         }
         else
         {
-            Console.WriteLine("Ingen mening angavs.");
+            Console.WriteLine("Ogiltig ålder, försök igen.");
         }
     }
-    // Metod för att hantera inmatning av text och upprepa den tio gånger1
-    void HandleRepeatText()
+    // Skriv ut totalsumman för alla personer
+    Console.WriteLine();
+    Console.WriteLine("******************************************");
+    Console.WriteLine();
+    Console.WriteLine();
+    Console.WriteLine("             Totalt pris: " + price + " kr");
+    Console.WriteLine();
+    Console.WriteLine();
+    Console.WriteLine("******************************************");
+    Console.WriteLine();
+}
+
+// Metod för att hantera inmatning av en mening och visa det tredje ordet
+void HandleThirdWord()
+{
+    Console.WriteLine("Skriv in en mening:");
+    string? line = Console.ReadLine();
+
+    // Kontrollera om input är null
+    if (line != null)
     {
-        Console.WriteLine("Anger en godtycklig text:");
-        string? text = Console.ReadLine();
-        // Upprepa texten tio gånger
-        for (int i = 0; i < 10; i++)
+        var split = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        int wordCount = split.Length;
+        if (wordCount >= 3)
         {
-            Console.Write(text + (i + 1) + ", ");
+            // Skriv ut det tredje ordet (index 2 eftersom arrayer börjar på 0)
+            Console.WriteLine();
+            Console.WriteLine("Det tredje ordet är: " + split[2]);
+            Console.WriteLine();
         }
-        Console.WriteLine();
+        else
+        {
+            Console.WriteLine("Mening måste innehålla minst tre ord.");
+        }
     }
-    // Hantera avslutning av programmet
-    void HandleExit()
+    else
     {
-        Console.WriteLine("Avslutar programmet...");
-        fortsätt = false;
+        Console.WriteLine("Ingen mening angavs.");
     }
 }
 
 // Metod för att beräkna pris baserat på ålder
-static int GetPriceForAge(int age)
+int GetPriceForAge(int age)
 {
-        if (age < 5 || age > 100) return 0;
-        if (age < UngdomsGräns) return UngdomsPris;
-        if (age > PensionärsGräns) return PensionärsPris;
-        return StandardPris;
+    if (age < 5 || age > 100) return 0;
+    if (age < UngdomsGräns) return UngdomsPris;
+    if (age > PensionärsGräns) return PensionärsPris;
+    return StandardPris;
 }
 
-static string GetCategoryForAge(int age)
+string GetCategoryForAge(int age)
 {
     if (age < 5 || age > 100) return "";
     if (age < UngdomsGräns) return "ungdom";
